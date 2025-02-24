@@ -3,7 +3,7 @@
 .EXPORT_ALL_VARIABLES:
 
 ## APP VARS ##
-OWNER             = proyect
+OWNER             = utp
 SERVICE_TYPE      = microservice
 SERVICE_NAME      = advertisement
 VERSION      	  = v1

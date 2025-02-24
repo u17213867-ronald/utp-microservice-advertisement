@@ -1,3 +1,5 @@
+import { AnnouncementModel } from './../../advertisement/infrastructure/orm/mapping-models/announcement.model';
+import { UserCompanyModel } from './../../advertisement/infrastructure/orm/mapping-models/user-company.model';
 import { Sequelize } from 'sequelize-typescript'
 import { createClient } from 'redis'
 import { ConfigService } from './services/config.service'
@@ -5,10 +7,15 @@ import { RedisService } from './services/redis.service'
 import { ConfigurationModel } from './models/configuration.model'
 import { IConfigurationRepository } from '../domain/interfaces/configuration.interface'
 import { ConfigurationRepository } from './repositories/configuration.repository'
+import { AnnouncementPositionModel } from './../../advertisement/infrastructure/orm/mapping-models/announcement-position.model';
+import { AnnouncementStudyModel } from './../../advertisement/infrastructure/orm/mapping-models/announcement-study.model';
 export const MODELS = [
-  ConfigurationModel  
+  ConfigurationModel,
+  UserCompanyModel,
+  AnnouncementModel,
+  AnnouncementPositionModel,
+  AnnouncementStudyModel  
 ]
-console.log(ConfigurationModel)
 
 export const DATABASE_PROVIDER = {
   provide: 'SEQUELIZE',
@@ -31,7 +38,8 @@ export const DATABASE_PROVIDER = {
         timestamps: false,
       },
     })
-    //sequelize.addModels(MODELS)
+    
+    sequelize.addModels(MODELS)
     await sequelize.sync()
 
     return sequelize

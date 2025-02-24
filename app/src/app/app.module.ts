@@ -4,6 +4,7 @@ import { CommonModule } from 'src/context/common/common.module'
 import { AdvertisementModule } from 'src/context/advertisement/advertisement.module'
 import { ConfigurationModel } from "src/context/common/infrastructure/models/configuration.model";
 import { ConfigModule } from '@nestjs/config';
+import { AdvertisementController } from './rest/advertisement.controller';
 
 
 export default () => ({
@@ -11,7 +12,7 @@ export default () => ({
   });
 @Module({
   imports: [CommonModule, AdvertisementModule, ConfigModule.forRoot({ isGlobal: true })],
-  controllers: [UserController],
+  controllers: [UserController, AdvertisementController],
   providers: [],
 })
 export class AppModule {}
