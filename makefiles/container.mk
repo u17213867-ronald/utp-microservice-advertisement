@@ -58,14 +58,16 @@ lint: ##@Global install dependencies
 format: ##@Local install dependencies
 	make container-run COMMAND="lint:format"
 
-create-migration: ##@Global Create migration make create-migration MIGRATION=create-santander-lead-table
+create-migration: ##@Global Create migration make create-migration MIGRATION=add-fields-to-announcement
 	make container-run COMMAND="sequelize migration:generate --name $(MIGRATION)"
 
 create-seed: ##@Global Create migration make create-migration MIGRATION=create-santander-lead-table
 	make container-run COMMAND="sequelize seed:generate --name $(MIGRATION)"
 
 migrate: ##@Global Run migrations
-	@echo "migraciones $(APP_ENV)"
+	make container-run COMMAND="sequelize db:create"
+	make container-run COMMAND="sequelize db:migrate"
+	make container-run COMMAND="sequelize db:seed:all"
 
 migrate-rollback: ##@Global Undo migration
 	make container-run COMMAND="sequelize db:migrate:undo"
