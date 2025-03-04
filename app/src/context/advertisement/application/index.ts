@@ -1,7 +1,8 @@
-import { CreateAnnouncementService, PublishAnnouncementService } from './services/announcement.service';
+import { CreateAnnouncementService, PublishAnnouncementService, AnnouncementSearchService } from './services/announcement.service';
 // advertisement module entry point
 
 export const APPLICATION_SERVICES = [
     CreateAnnouncementService,
-    PublishAnnouncementService
+    PublishAnnouncementService,
+    AnnouncementSearchService
 ]

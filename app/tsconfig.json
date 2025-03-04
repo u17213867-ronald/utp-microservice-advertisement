@@ -16,6 +16,14 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+    "paths": {
+      "@src/*": ["src/*"],
+      "@app/*": ["src/app/*"],
+      "@rest/*": ["src/app/rest/*"],
+      "@interceptor/*": ["src/app/interceptor/*"],
+      "@common/*": ["src/context/common/*"],
+      "@search/*": ["src/context/search/*"]
+    }
   }
 }

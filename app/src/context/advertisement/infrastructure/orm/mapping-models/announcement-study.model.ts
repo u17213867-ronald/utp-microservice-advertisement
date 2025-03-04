@@ -16,7 +16,7 @@ export class AnnouncementStudyModel extends Model {
   @Column({ field: 'degree_id', type: DataType.INTEGER, allowNull: true })
   degreeId: number;
 
-  @Column({ field: 'educationLevel_id', type: DataType.INTEGER, allowNull: true })
+  @Column({ field: 'education_level_id', type: DataType.INTEGER, allowNull: true })
   educationLevelId: number;
 
   @Column({ field: 'skill_id', type: DataType.INTEGER, allowNull: true })

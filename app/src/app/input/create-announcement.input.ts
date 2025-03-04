@@ -82,6 +82,12 @@ export class CreateAnnouncementInput implements CreateAnnouncementDto {
   @IsInt()
   locationId?: number;
 
+
+  @ApiProperty({ example: 1, description: 'ID of the area.', required: false })
+  @IsOptional()
+  @IsInt()
+  areaId?: number;
+
   @ApiProperty({ example: 3, description: 'ID of the user company.', required: false })
   @IsOptional()
   @IsInt()

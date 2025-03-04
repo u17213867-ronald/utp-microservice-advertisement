@@ -2,9 +2,9 @@ import { NestFactory } from '@nestjs/core'
 import { AppModule } from './app/app.module'
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger'
 import { ExceptionsFilter } from './app/filter/exception.filter'
-import { ConfigService } from './context/common/infrastructure/services/config.service'
+import { ConfigService } from '@common/infrastructure/services/config.service'
 import { HttpStatus, ValidationPipe } from '@nestjs/common'
-import { CustomException } from './context/common/application/exceptions/custom.exception'
+import { CustomException } from '@common/application/exceptions/custom.exception'
 import { RequestInterceptor } from './app/interceptor/request.interceptor'
 import { ResponseInterceptor } from './app/interceptor/response.interceptor'
 import { LoggerInterceptor } from './app/interceptor/logger.interceptor'
@@ -27,9 +27,8 @@ export function getErrorMessage(error: any): string | null {
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
-    bufferLogs: true,
+    bufferLogs: true
   })
-
   app.useGlobalInterceptors(new RequestInterceptor(), new ResponseInterceptor(), new LoggerInterceptor())
   app.useGlobalPipes(
     new ValidationPipe({
@@ -64,6 +63,6 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, options)
   SwaggerModule.setup(`v${version}/${name}/doc`, app, document)
 
-  await app.listen(process.env.PORT ?? 3000)
+  await app.listen(process.env.PORT ?? 80)
 }
 bootstrap()

@@ -4,6 +4,7 @@ export interface CreateAnnouncementDto {
     description: string;
     status: 'active' | 'inactive';
     locationId?: number;
+    areaId?: number;
     userCompanyId?: number;
     publicationStatus: 'published' | 'draft';
     positions?: {
@@ -19,4 +20,22 @@ export interface CreateAnnouncementDto {
       educationLevelId?: number;
       skillId?: number;
     }[];
+  }
+
+
+  export interface IQueryAnnouncementInput {
+    filter: IQueryFilterAnnouncementInput;
+    page: number;
+    limit: number
+  }
+
+
+  export interface IQueryFilterAnnouncementInput {
+    title: string;
+    description: string;
+    status: 'active' | 'inactive';
+    locationId?: number;
+    areaId?: number;
+    userCompanyId?: number;
+    publicationStatus: 'published' | 'draft'
   }

@@ -10,7 +10,6 @@ export class LoggerInterceptor implements NestInterceptor {
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
     const request = context.switchToHttp().getRequest()
     const startTime = Date.now()
-
     return next.handle().pipe(
       tap(() => {
         if (!String(request.originalUrl).includes('health')) {

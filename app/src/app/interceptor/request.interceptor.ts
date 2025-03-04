@@ -5,7 +5,7 @@ import { Observable } from 'rxjs'
 export class RequestInterceptor implements NestInterceptor {
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
     const request = context.switchToHttp().getRequest()
-
+    console.log(request.body)
     this.trim(request.body)
     this.trim(request.query)
     return next.handle()

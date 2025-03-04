@@ -19,6 +19,15 @@ export class AnnouncementModel extends Model {
   @Column({ field: 'location_id', type: DataType.INTEGER, allowNull: true })
   locationId: number;
 
+  @Column({ field: 'area_id', type: DataType.INTEGER, allowNull: true })
+  areaId: number;
+
+  @Column({ type: DataType.TEXT, allowNull: false })
+  logo: string;
+
+  @Column({ field: 'publication_date', type: DataType.DATE, allowNull: true })
+  publicationDate: Date
+
   @Column({ field: 'user_company_id', type: DataType.INTEGER, allowNull: true })
   userCompanyId: number;
 

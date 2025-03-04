@@ -10,6 +10,7 @@ export class ResponseInterceptor implements NestInterceptor {
       map((data) => {
 
         if (data instanceof HttpException) {
+          console.log(data)
           return {
             code: data.getStatus(),
             message: data.message,

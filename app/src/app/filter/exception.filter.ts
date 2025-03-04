@@ -13,9 +13,11 @@ export class ExceptionsFilter implements ExceptionFilter {
     const code = exception instanceof HttpException ? exception.getStatus() : HttpStatus.INTERNAL_SERVER_ERROR
     const type = code >= 400 && code < 500 ? LogTypeEnum.WARNING : LogTypeEnum.CRITICAL
     const trace = exception.showTrace ? exception.stack : null
-
-    this.loggerService.log(type, code, exception.message, request, null, trace)
-
+    const errorClass = exception.constructor ? exception.constructor.name : 'UnknownException';
+    const route = request.originalUrl || request.url; // Obtiene la ruta solicitada
+    const method = request.method; // Método HTTP
+    // this.loggerService.log(type, code, exception.message, request, null, trace)
+    console.log(exception)
     response.status(code).json({
       code,
       message: exception.message ?? 'An unexpected error occurred. Please try again later.',
