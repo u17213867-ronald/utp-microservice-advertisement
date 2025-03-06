@@ -2,10 +2,8 @@
 USERNAME_LOCAL ?= "$(shell whoami)"
 UID_LOCAL      ?= "$(shell id -u)"
 GID_LOCAL      ?= "$(shell id -g)"
-
 LOCAL_DOCKER_IMAGE ?= $(PROJECT_NAME):local
 DEV_DOCKER_IMAGE   = $(PROJECT_NAME):dev
-
 CONTAINER_NAME = $(PROJECT_NAME)_backend
 PREFIX_PATH = /$(VERSION)/$(SERVICE_NAME)
 
